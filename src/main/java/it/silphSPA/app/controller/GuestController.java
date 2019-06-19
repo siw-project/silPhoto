@@ -72,7 +72,8 @@ public class GuestController {
 		return "albumGuest";
 	}
 	@RequestMapping("/fotografo/{idF}/album/{idA}/fotografia/{idPh}")
-	public String visualizzaFotografia(@PathVariable("idF")Long idF, @PathVariable("idA")Long idA,
+	public String visualizzaFotografia(@Valid@ModelAttribute("fotografia")Fotografia fotografia,
+			@PathVariable("idF")Long idF, @PathVariable("idA")Long idA,
 			@PathVariable("idPh")Long idPh, Model model) {
 		Fotografo f = this.fotografoService.getPerId(idF);
 		Album a = this.albumService.getPerId(idA);
@@ -82,13 +83,13 @@ public class GuestController {
 		return "fotografiaGuest";
 		
 	}
-	@RequestMapping(value = "/fotografo/{idF}/album/{idA}/fotografia/{idPh}/putInRichiesta", method = {RequestMethod.POST})
+	@RequestMapping(value = "/fotografo/{idF}/album/{idA}/fotografia/{idPh}/putInRichiesta", method = RequestMethod.GET)
 	public String aggiungiFotografiaInRichiesta(@PathVariable("idF")Long idF,@PathVariable("idA")Long idA,
 			@PathVariable("idPh")Long idPh,Model model) {
 		Fotografo f = this.fotografoService.getPerId(idF);
 		Album a = this.albumService.getPerId(idA);
 		Fotografia ph = this.fotografiaService.getPerId(idPh);
-		if(richiestaCorrente==null) {
+		if(this.richiestaCorrente==null) {
 			this.richiestaCorrente = new Richiesta();
 			}
 		this.richiestaService.addFotografia(this.richiestaCorrente, ph);

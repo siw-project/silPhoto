@@ -166,7 +166,7 @@ public class FunzionarioController {
 		}
 	}
 
-	@RequestMapping(value = "/fotografo/{idF}/album/{idA}/fotografia/{idPh}", method = RequestMethod.GET)
+	@RequestMapping(value = "/funzionario/fotografo/{idF}/album/{idA}/fotografia/{idPh}", method = RequestMethod.GET)
 	public String visualizzaFotografia(@Valid@ModelAttribute("fotografia")Fotografia fotografia,
 			@PathVariable("idF")Long idF, @PathVariable("idA")Long idA,
 			@PathVariable("idPh")Long idPh,  Model model) {
