@@ -7,77 +7,93 @@
              Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
 -->
 <html xmlns:th="http://www.thymeleaf.org"
-             xmlns="http://www.w3.org/1999/html">
-             <head>
-                         <title>Full Motion</title>
-                         <meta charset="utf-8" />
-                         <meta name="viewport" content="width=device-width, initial-scale=1" />
-                         <link rel="stylesheet" th:href="@{/css/main.css}" />
-             </head>
-             <body id="top">
+	xmlns="http://www.w3.org/1999/html">
+<head>
+<title>Full Motion</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" th:href="@{/css/main.css}" />
+</head>
+<body id="top">
 
-                                      <!-- Banner -->
-                                      <!--
+	<!-- Banner -->
+	<!--
                                                   To use a video as your background, set data-video to the name of your video without
                                                    its extension (eg. images/banner). Your video must be available in both .mp4 and .webm
                                                   formats to work correctly.
                                       -->
-                                                  <section id="banner" data-video="images/banner">
-                                                               <div class="inner">
-                                                                           <header>
-                                                                                        <h1>Benvenuto Funzionario</h1>
-                                                                                        <p>Scegli una delle opzioni possibili oppure effettua il logout</p>
-                                                                                        
-                                                                           </header>
-                                                                           
-                                                               </div>
-                                                  </section>
+	<section id="banner" data-video="images/banner">
+		<div class="inner">
+			<header>
+				<h1>Benvenuto Funzionario</h1>
+				<p>Scegli una delle opzioni possibili oppure effettua il logout</p>
 
-                                      <!-- Main -->
-                                                  <div id="main">
-                                                               <div class="inner">
+			</header>
 
-                                                               <!-- Boxes -->
-                                                                           <div class="thumbnails">
+		</div>
+	</section>
 
-                                                                                        <div class="box">
-                                                                                                    <a th:href="@{/funzionario/addFotografo}" class="image fit"><img src="images/pic01.jpg" alt="" /></a>
-                                                                                                    <div class="inner">
-                                                                                                                 <h3>Aggiungi un Fotografo</h3>
-                                                                                                                 <p>Clicca qui per aggiungere un nuovo fotografo </p>
-                                                                                                                 <a th:href="@{/funzionario/addFotografo}" class="button fit" >Vai</a>
-                                                                                                    </div>
-                                                                                        </div>
+	<!-- Main -->
+	<div id="main">
+		<div class="inner">
 
-                                                                           
+			<!-- Boxes -->
+			<div class="thumbnails">
 
-                                                               
+				<div class="box">
+					<a th:href="@{/funzionario/addFotografo}" class="image fit"><img
+						src="images/pic01.jpg" alt="" /></a>
+					<div class="inner">
+						<h3>Aggiungi un Fotografo</h3>
+						<p>Clicca qui per aggiungere un nuovo fotografo</p>
+						<a th:href="@{/funzionario/addFotografo}" class="button fit">Vai</a>
+					</div>
+				</div>
 
-                                                                           
+				<div class="box">
+					<a th:href="@{/funzionario/listaFotografi}" class="image fit"><img
+						src="images/pic03.jpg" alt="" /></a>
+					<div class="inner">
+						<h3>Lista dei fotografi</h3>
+						<p>Clicca qui per visualizzare la lista dei Fotografi</p>
+						<br> <a  th:href="@{/funzionario/listaFotografi}"
+							class="button style3 fit" >Vai</a>
+					</div>
+				
 
-                                                                                        
-                                                                                        </div>
+			
+				</div>
 
-                                                                           </div>
 
-                                                               </div>
-                                                  
 
-                                      <!-- Footer -->
-                                                  <footer id="footer">
-                                                               <div class="inner">
-                                                                           <h2><a href="/logout">Logout</a></h2>
-                                                                           
-                                                               </div>
-                                                  </footer>
 
-                         <!-- Scripts -->
-                                      <script src="assets/js/jquery.min.js"></script>
-                                      <script src="assets/js/jquery.scrolly.min.js"></script>
-                                      <script src="assets/js/jquery.poptrox.min.js"></script>
-                                      <script src="assets/js/skel.min.js"></script>
-                                      <script src="assets/js/util.js"></script>
-                                      <script src="assets/js/main.js"></script>
 
-             </body>
+
+
+			</div>
+
+		</div>
+
+	</div>
+
+
+	<!-- Footer -->
+	<footer id="footer">
+		<div class="inner">
+			<h2>
+				<a href="/logout">Logout</a>
+			</h2>
+
+		</div>
+	</footer>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/jquery.poptrox.min.js"></script>
+	<script src="assets/js/skel.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+</body>
 </html>
