@@ -4,8 +4,7 @@
 <body>
 	<div>
 		<h4>
-			TITOLO ALBUM:<span
-				th:text="${album.titolo}"></span>
+			TITOLO ALBUM:<span th:text="${album.titolo}"></span>
 		</h4>
 	</div>
 	<div>
@@ -13,7 +12,7 @@
 			<li th:each="fotografia:${fotografie}"><a
 				th:href="@{'/fotografo' + '/' + ${fotografo.id} + '/album' + '/' + ${album.id}
 				+'/fotografia'+'/'+${fotografia.id}}"
-				th:text="${fotografia.titolo}">titolo Foresi</a>
+				th:text="${fotografia.titolo}">titolo Foresi</a></li>
 		</ul>
 	</div>
 

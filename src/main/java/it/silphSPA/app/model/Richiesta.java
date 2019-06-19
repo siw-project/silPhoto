@@ -1,5 +1,6 @@
 package it.silphSPA.app.model;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -19,6 +20,7 @@ public class Richiesta {
 	@ManyToMany(mappedBy="richieste")
 	private List<Fotografia> fotografie;
 	public Richiesta() {
+		this.fotografie = new LinkedList<Fotografia>();
 	}
 	public Long getId() {
 		return id;
@@ -43,5 +45,11 @@ public class Richiesta {
 	}
 	public void setCognomeDestinatario(String cognomeDestinatario) {
 		this.cognomeDestinatario = cognomeDestinatario;
+	}
+	public List<Fotografia> getFotografie() {
+		return fotografie;
+	}
+	public void setFotografie(List<Fotografia> fotografie) {
+		this.fotografie = fotografie;
 	}
 }

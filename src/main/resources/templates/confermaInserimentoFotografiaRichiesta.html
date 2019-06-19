@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/html">
+<body>
+	<div>
+		<h4>
+			FOTOGRAFIA <span th:text="${fotografia.nome +' '+fotografia.cognome}"></span>
+			INSERITA CORRETTAMENTE NEL CARRELLO(Richiesta n.<span
+				th:text="${richiesta.id}">ciao</span>)!
+		</h4>
+	</div>
+
+	<div>
+		<a
+			th:href="@{'/fotografo'+'/'+${fotografo.id}+'/album'+'/'+
+	${album.id}+'/fotografia'+'/'+${fotografia.id}}">Torna
+			Indietro</a>
+
+	</div>
+
+
+</body>
+</html>

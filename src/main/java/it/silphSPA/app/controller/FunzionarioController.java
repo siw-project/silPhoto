@@ -31,10 +31,17 @@ public class FunzionarioController {
 	private FotografiaService fotografiaService;
 	@Autowired
 	private FotografiaValidator fotografiaValidator;
+	@Autowired
+	private RichiestaService richiestaService;
 
 	@RequestMapping("/funzionario/home")
 	public String homeFunzionario() {
 		return "homeFunzionario";
+	}
+	@RequestMapping("/funzionario/richieste")
+	public String visualizzaRichieste(Model model) {
+		model.addAttribute("richieste", this.richiestaService.getTutte());
+		return "listaRichieste";
 	}
 	@RequestMapping("/funzionario/listaFotografi")
 	public String visualizzaAreaFotografi(Model model) {
@@ -112,13 +119,14 @@ public class FunzionarioController {
 
 	}
 	@RequestMapping(value = "/funzionario/fotografo/{idF}/album/{idA}", method = RequestMethod.GET)
-	public String visualizzaAlbum(@Valid@ModelAttribute("fotografia") Fotografia ph,
-			@PathVariable("idF")Long idF,
+	public String visualizzaAlbum(@PathVariable("idF")Long idF,
 			@PathVariable("idA")Long idA, Model model) {
 		Fotografo f = this.fotografoService.getPerId(idF);
+		Album a = this.albumService.getPerId(idA);
 		model.addAttribute("fotografo", f);
 		if(this.albumService.existsPerId(idA)) {
-			model.addAttribute("album", this.albumService.getPerId(idA));
+			model.addAttribute("fotografie", this.fotografiaService.getPerAlbum(a));
+			model.addAttribute("album", a);
 			return "albumFunzionario";
 		}
 		else {
@@ -171,7 +179,7 @@ public class FunzionarioController {
 			return "fotografia";
 		}
 		else {
-			model.addAttribute("fotografie", this.albumService.getFotografie(a));
+			model.addAttribute("fotografie", this.fotografiaService.getPerAlbum(a));
 			return "albumFunzionario";
 		}
 
