@@ -19,21 +19,17 @@
 	</div>
 	<div>
 		<ul>
-			<li th:each="album:${albums}"><a
+			<li th:each="album:${listaAlbum}"><a
 				th:href="@{'/funzionario'+'/fotografo' + '/' + ${fotografo.id} + '/album' + '/' + ${album.id}}"
 				th:text="${album.titolo}">titolo Foresi</a>
 		</ul>
 	</div>
-	<div>
-		<a
-			th:href="@{'/funzionario'+'/fotografo' + '/' + ${fotografo.id} +
-				'/album'+'/'+${album.id}+'/addFotografia'}">Inserisci
-			una fotografia</a>
-	</div>
+
+
 
 
 	<div>
-		<a th:href="@{'/fotografo' + '/' + ${fotografo.id} + '/addAlbum'}">Inserisci
+		<a th:href="@{'/funzionario'+'/fotografo' + '/' + ${fotografo.id} + '/addAlbum'}">Inserisci
 			nuovo Album</a>
 	</div>
 
