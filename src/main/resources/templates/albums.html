@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/html">
+<body>
+	<div>
+		<h4>
+			Albums del fotografo <span
+				th:text="${fotografo.nome+' '+fotografo.cognome}">Francesco</span>
+		</h4>
+	</div>
+	<div>
+		<ul>
+			<li th:each="album:${albums}"><a
+				th:href="@{'/fotografo' + '/' + ${fotografo.id} + '/album' + '/' + ${album.id}}"
+				th:text="${album.titolo}">titolo
+					Foresi</a>
+		</ul>
+	</div>
+
+
+</body>
+</html>

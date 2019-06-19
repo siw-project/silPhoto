@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/html">
+<body>
+	<div>
+		<h4>Inserisci un Album per <span th:text="${fotografo.cognome}">Franzino</span></h4>
+	</div>
+	<div>
+		<form th:action="@{'/fotografo'+'/'+${fotografo.id}+'/album'}"
+			method="POST" th:object="${album}">
+			<table>
+				<tr>
+					<td>TITOLO:</td>
+					<td><input type="text" th:field="*{titolo}"></td>
+					<td th:if="${#fields.hasErrors('titolo')}" th:errors="*{titolo}"></td>
+				</tr>
+				<tr>
+				</tr>
+			</table>
+			<button type="submit">Invia</button>
+		</form>
+		
+
+	</div>
+</body>
+</html>
