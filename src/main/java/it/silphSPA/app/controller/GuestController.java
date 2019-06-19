@@ -23,23 +23,22 @@ public class GuestController {
 	private AlbumService albumService;
 	@Autowired
 	private FotografiaService fotografiaService;
-
+	
 	@RequestMapping(value = { "/admin" }, method = RequestMethod.GET)
-	public String admin(Model model) {
-		UserDetails details = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		String role = details.getAuthorities().iterator().next().getAuthority();    // get first authority
-		model.addAttribute("username", details.getUsername());
-		model.addAttribute("role", role);
+    public String admin(Model model) {
+        UserDetails details = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String role = details.getAuthorities().iterator().next().getAuthority();    // get first authority
+        model.addAttribute("username", details.getUsername());
+        model.addAttribute("role", role);
 
-		return "admin";
-	}
-
-
+        return "admin";
+    }
+	
 	@RequestMapping("/")
 	public String homeGuest() {
 		return "homeGuest";
 	}
-
+	
 	@RequestMapping("/areaFotografi")
 	public String visualizzaAreaFotografi(Model model) {
 		model.addAttribute("fotografi",this.fotografoService.getTutti());
@@ -52,7 +51,6 @@ public class GuestController {
 		model.addAttribute("listaAlbum", this.albumService.getAlbumPerFotografo(f));
 		return "fotografoGuest";
 	}
-	
 	@RequestMapping("/fotografo/{idF}/album/{idA}")
 	public String visualizzaFotografie(@PathVariable("idF")Long idF,
 			@PathVariable("idA")Long idA,Model model){
@@ -63,14 +61,16 @@ public class GuestController {
 		model.addAttribute("fotografie", this.fotografiaService.getPerAlbum(a));
 		return "albumGuest";
 	}
-
-
-
-
-
-
+	@RequestMapping("/fotografo/{idF}/album/{idA}/fotografia/{idPh}")
+	public String visualizzaFotografia(@PathVariable("idF")Long idF, @PathVariable("idA")Long idA,
+			@PathVariable("idPh")Long idPh, Model model) {
+		Fotografo f = this.fotografoService.getPerId(idF);
+		Album a = this.albumService.getPerId(idA);
+		model.addAttribute("fotografo", f);
+		model.addAttribute("album", a);
+		model.addAttribute("fotografia", this.fotografiaService.getPerId(idPh));
+		return "fotografiaGuest";
+		
+	}
 	
-
-
-
 }

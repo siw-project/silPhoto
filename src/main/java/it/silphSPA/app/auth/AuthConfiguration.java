@@ -55,7 +55,10 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
                     .antMatchers(HttpMethod.GET, "/areaFotografi").permitAll()
 
                     .antMatchers(HttpMethod.GET, "/fotografo/{id}").permitAll()
-                    .antMatchers(HttpMethod.GET,"/contatti").permitAll()
+                    .antMatchers(HttpMethod.GET,"/fotografo/{id}/album/{id}").permitAll()
+                    //.antMatchers(HttpMethod.GET,"/contatti").permitAll()
+                    //.antMatchers(HttpMethod.GET,"/contatti").permitAll()
+                    //.antMatchers(HttpMethod.GET,"/contatti").permitAll()
 
                     // only admin can access the admin page
                     .antMatchers(HttpMethod.GET, "/admin").hasAnyAuthority("ADMIN")
@@ -67,10 +70,8 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
                 // use formlogin protocol to perform login
                 .and().formLogin()
                     // after login is successful, redirect to /welcome page
-
-                    .defaultSuccessUrl("/homeFunzionario")
-
-
+                    .defaultSuccessUrl("/funzionario/home")
+                //NOTE: we are using the default configuration for login,
                 // meaning that the /login url is automatically mapped to auto-generated page.
                 // for our own page, we would need to use loginPage()
                 // and write a method for accessing it with GET method (but Spring would still handle the POST automatically)

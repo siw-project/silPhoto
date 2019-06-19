@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns="http://www.w3.org/1999/html">
 <body>
+<div><h3><span th:text = "${confermaInserimentoAlbum}"></span></h3></div>
 	<div>
 		<h4>FOTOGRAFO</h4>
 	</div>
@@ -13,7 +14,7 @@
 	</div>
 	<div>
 		<h5>
-			Albums del fotografo <span
+			Gli album del fotografo: <span
 				th:text="${fotografo.nome+' '+fotografo.cognome}">Francesco</span>
 		</h5>
 	</div>
@@ -24,14 +25,12 @@
 				th:text="${album.titolo}">titolo Foresi</a>
 		</ul>
 	</div>
-
-
-
-
 	<div>
-		<a th:href="@{'/funzionario'+'/fotografo' + '/' + ${fotografo.id} + '/addAlbum'}">Inserisci
-			nuovo Album</a>
+		<a
+			th:href="@{'/funzionario'+'/fotografo' + '/' + ${fotografo.id}+'/addAlbum'}">Inserisci
+			un Album</a>
 	</div>
+
 
 </body>
 </html>

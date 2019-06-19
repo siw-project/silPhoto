@@ -9,8 +9,8 @@ public class Fotografia {
 	private String titolo;
 	@ManyToOne
 	private Album album;
-	//@ManyToMany(mappedBy = "album")
-	//private List<Richiesta> richieste;
+	@ManyToMany
+	private List<Richiesta> richieste;
 	public Fotografia() {
 	}
 	public Long getId() {

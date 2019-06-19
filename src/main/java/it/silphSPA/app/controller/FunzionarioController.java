@@ -91,7 +91,7 @@ public class FunzionarioController {
 	}
 
 
-	@RequestMapping(value = "/funzionario/fotografo/{id}/album", method = RequestMethod.POST)
+	@RequestMapping(value = "/funzionario/fotografo/{id}/album", method = {RequestMethod.GET, RequestMethod.POST})
 	public String inserisciNuovoAlbum(@Valid@ModelAttribute("album")Album album,
 			@PathVariable("id")Long id,Model model, String titolo, BindingResult bindingResultAlbum ) {
 		Fotografo f = this.fotografoService.getPerId(id);
@@ -100,6 +100,7 @@ public class FunzionarioController {
 		if(!bindingResultAlbum.hasErrors()) {
 			this.albumService.setFotografo(album, f);
 			this.fotografoService.addAlbum(album, f);
+			model.addAttribute("confermaInserimentoAlbum", "Album Inserito Correttamente!");
 			model.addAttribute("album", album);
 			model.addAttribute("listaAlbum", this.albumService.getAlbumPerFotografo(f));
 			return "fotografoFunzionario";
@@ -133,7 +134,7 @@ public class FunzionarioController {
 		return "fotografiaForm";
 
 	}
-	@RequestMapping(value = "/funzionario/fotografo/{idF}/album/{idA}/confermaInserimentoFotografia", method = RequestMethod.POST)
+	@RequestMapping(value = "/funzionario/fotografo/{idF}/album/{idA}/confermaInserimentoFotografia", method = {RequestMethod.GET, RequestMethod.POST})
 	public String inserisciNuovaFotografia(@Valid@ModelAttribute("fotografia")Fotografia fotografia,
 			@PathVariable("idF")Long idF, @PathVariable("idA")Long idA, Model model,
 			BindingResult bindingResult, String titolo) {
