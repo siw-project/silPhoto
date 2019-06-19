@@ -34,7 +34,7 @@ public class GuestController {
         return "admin";
     }
 	
-	@RequestMapping("/homeGuest")
+	@RequestMapping("/")
 	public String homeGuest() {
 		return "homeGuest";
 	}
