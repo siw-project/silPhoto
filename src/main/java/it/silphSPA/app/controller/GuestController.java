@@ -48,7 +48,7 @@ public class GuestController {
 	public String visuallizzaAlbum(@PathVariable("id")Long id, Model model) {
 		Fotografo f = this.fotografoService.getPerId(id);
 		model.addAttribute("fotografo", f);
-		model.addAttribute("albums", this.albumService.getAlbumPerFotografo(f));
+		model.addAttribute("listaAlbum", this.albumService.getAlbumPerFotografo(f));
 		return "fotografoGuest";
 	}
 	@RequestMapping("/fotografo/{idF}/album/{idA}")

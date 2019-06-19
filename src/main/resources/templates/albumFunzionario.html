@@ -4,15 +4,16 @@
 <body>
 	<div>
 		<h4>
-			Albums del fotografo <span
-				th:text="${fotografo.nome+' '+fotografo.cognome}">Francesco</span>
+			TITOLO ALBUM:<span
+				th:text="${album.titolo}"></span>
 		</h4>
 	</div>
 	<div>
 		<ul>
-			<li th:each="album:${albums}"><a
-				th:href="@{'/funzionario'+'/fotografo' + '/' + ${fotografo.id} + '/album' + '/' + ${album.id}}"
-				th:text="${album.titolo}">titolo Foresi</a>
+			<li th:each="fotografia:${fotografie}"><a
+				th:href="@{'/funzionario'+'/fotografo' + '/' + ${fotografo.id} + '/album' + '/' + ${album.id}
+				+'/fotografia'+'/'+${fotografia.id}}"
+				th:text="${fotografia.titolo}">titolo Foresi</a>
 		</ul>
 	</div>
 	<div>

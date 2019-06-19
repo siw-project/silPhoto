@@ -11,5 +11,20 @@
 	<div>
 		Cognome: <span th:text="${fotografo.cognome}">F</span>
 	</div>
+	<div>
+		<h5>
+			Albums del fotografo <span
+				th:text="${fotografo.nome+' '+fotografo.cognome}">Francesco</span>
+		</h5>
+	</div>
+	<div>
+		<ul>
+			<li th:each="album:${listaAlbum}"><a
+				th:href="@{'/fotografo' + '/' + ${fotografo.id} + '/album' + '/' + ${album.id}}"
+				th:text="${album.titolo}">titolo Foresi</a>
+		</ul>
+	</div>
+
+
 </body>
 </html>

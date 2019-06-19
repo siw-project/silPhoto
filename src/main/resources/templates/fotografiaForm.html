@@ -10,7 +10,7 @@
 	</div>
 	<div>
 		<form
-			th:action="@{'/fotografo'+'/'+${fotografo.id}+'/album'+'/'+${album.id}+'/aggiornato'}"
+			th:action="@{'/funzionario'+'/fotografo'+'/'+${fotografo.id}+'/album'+'/'+${album.id}+'/aggiornato'}"
 			method="POST" th:object="${fotografia}">
 			<table>
 				<tr>

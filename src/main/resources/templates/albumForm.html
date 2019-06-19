@@ -6,7 +6,7 @@
 		<h4>Inserisci un Album per <span th:text="${fotografo.cognome}">Franzino</span></h4>
 	</div>
 	<div>
-		<form th:action="@{'/fotografo'+'/'+${fotografo.id}+'/album'}"
+		<form th:action="@{'/funzionario'+'/fotografo'+'/'+${fotografo.id}+'/album'}"
 			method="POST" th:object="${album}">
 			<table>
 				<tr>
