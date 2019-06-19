@@ -1,14 +1,26 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns="http://www.w3.org/1999/html">
-<body>
-	<div>
-		<h4>FOTOGRAFO <span th:text="${fotografo.nome +' '+fotografo.cognome}"></span>
-		INSERITO CORRETTAMENTE!</h4>
-	</div>
+	<head>
+		<title>Full Motion</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" th:href="@{/css/main.css}" />
+	</head>
+	<body id="top">
+	   
 	
-	<div>
-	<a th:href="@{'/funzionario'+'/home'}">TORNA ALLA HOME</a>
+		<div align="center"><font face="Times New Roman" size="40px" color="white">Il FOTOGRAFO    "</font>
+		
+		<font face="Times New Roman" size="40px" color="white"><span  th:text="${fotografo.nome +' '+fotografo.cognome}"><i>Luca</i></span>"
+		                  E' STATO INSERITO CORRETTAMENTE!</font>
+	</div> 
+	<br>
+	<br>
+	<br>
+	<div align="center">
+	<a th:href="@{'/funzionario'+'/home'}"><button type = "submit">TORNA ALLA HOME</button></a>
 		
 	</div>
 

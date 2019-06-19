@@ -1,9 +1,5 @@
 <!DOCTYPE HTML>
-<!--
-	Full Motion by TEMPLATED
-	templated.co @templatedco
-	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
--->
+
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns="http://www.w3.org/1999/html">
 	<head>
@@ -14,8 +10,8 @@
 	</head>
 	<body id="top">
 
-	<div>
-		<h4>Inserisci un Fotografo</h4>
+	
+		<div align="center"><span style="font-size:80px;"><b>Inserisci un Fotografo</b></span>
 	</div>
 	<div>
 		<form th:action="@{'/funzionario'+'/fotografo'}" method="POST"
@@ -32,7 +28,7 @@
 					<td th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></td>
 				</tr>
 			</table>
-			<button type = "submit">Invia</button>
+			<div align="center"><button type = "submit">Invia</button></div>
 		</form>
 		
 	</div>

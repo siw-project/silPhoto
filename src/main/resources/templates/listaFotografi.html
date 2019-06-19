@@ -1,19 +1,28 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns="http://www.w3.org/1999/html">
-<body>
+<head>
+<title>Full Motion</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" th:href="@{/css/main.css}" />
+</head>
+<body id="top">
+
+   <div align="center">
 	<div>
-		<h4>Fotografi</h4>
+		<span style="font-size:100px;"><b>Fotografi</b></span>
 	</div>
 	<div>
 		<ul>
-			<li th:each="fotografo:${fotografi}"><a
+			<li th:each="fotografo:${fotografi}"><span style="font-size:20px;"><a
 				th:href="@{'/funzionario'+'/fotografo' + '/' + ${fotografo.id}}"
 				th:text="${fotografo.nome+' '+ fotografo.cognome}">Francesco
-					Foresi</a>
+					Foresi</a></span>
 		</ul>
 	</div>
-	<div><a th:href = "@{'/funzionario'+'/addFotografo'}">Inserisci Nuovo Fotografo</a></div>
+</div>
 
 
 </body>
