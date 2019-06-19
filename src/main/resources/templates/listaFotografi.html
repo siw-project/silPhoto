@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/html">
+<body>
+	<div>
+		<h4>Fotografi</h4>
+	</div>
+	<div>
+		<ul>
+			<li th:each="fotografo:${fotografi}"><a
+				th:href="@{'/funzionario'+'/fotografo' + '/' + ${fotografo.id}}"
+				th:text="${fotografo.nome+' '+ fotografo.cognome}">Francesco
+					Foresi</a>
+		</ul>
+	</div>
+	<div><a th:href = "@{'/funzionario'+'/addFotografo'}">Inserisci Nuovo Fotografo</a></div>
+
+
+</body>
+</html>

@@ -5,6 +5,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,24 +32,28 @@ public class FunzionarioController {
 	@Autowired
 	private FotografiaValidator fotografiaValidator;
 
-	@RequestMapping("/homeFunzionario")
+	@RequestMapping("/funzionario/home")
 	public String homeFunzionario() {
 		return "homeFunzionario";
 	}
+	@RequestMapping("/funzionario/listaFotografi")
+	public String visualizzaAreaFotografi(Model model) {
+		model.addAttribute("fotografi", this.fotografoService.getTutti());
+		return "listaFotografi";
+	}
 	
-	@RequestMapping("/addFotografo")
+	@RequestMapping("/funzionario/addFotografo")
 	public String visualizzaFotografoForm(@Valid@ModelAttribute("fotografo")Fotografo fotografo) {
 		return "fotografoForm";
 	}
 
-	@RequestMapping(value = "/fotografo", method = {RequestMethod.POST, RequestMethod.GET})
+	@RequestMapping(value = "/funzionario/fotografo", method = {RequestMethod.POST, RequestMethod.GET})
 	public String inserisciNuovoFotografo(@Valid@ModelAttribute("fotografo")Fotografo fotografo, 
 			Model model, String nome, String cognome,BindingResult bindingResult) {
 		this.fotografoValidator.validate(fotografo, bindingResult);
 		if(!bindingResult.hasErrors()) {
 			this.fotografoService.addFotografo(fotografo);
-			model.addAttribute("fotografi", this.fotografoService.getTutti());
-			return "fotografi";
+			return "confermaInserimentoFotografo";
 		}else {
 			return "fotografoForm";
 
@@ -58,17 +63,26 @@ public class FunzionarioController {
 
 
 
-	@RequestMapping(value = "/fotografo/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/funzionario/fotografo/{id}", method = RequestMethod.GET)
 	public String visualizzaFotografo(@PathVariable("id")Long id, Model model){
 		if(this.fotografoService.existsPerId(id)) {
-			model.addAttribute("fotografo", this.fotografoService.getPerId(id));
-			return "fotografo";
+			Fotografo f = this.fotografoService.getPerId(id);
+			model.addAttribute("fotografo", f);
+			model.addAttribute("listaAlbum", this.albumService.getAlbumPerFotografo(f));
+			return "fotografoFunzionario";
 		}else {
 			model.addAttribute("fotografi", this.fotografoService.getTutti());
-			return "fotografi";
+			return "listaFotografi";
 		}
 	}
-	@RequestMapping("/fotografo/{id}/addAlbum")
+	/*@RequestMapping("/funzionario/fotografo/{id}/areaAlbum")
+	public String visualizzaAreaAlbum(@PathVariable("id")Long id,Model model) {
+		Fotografo f = this.fotografoService.getPerId(id);
+		model.addAttribute("fotografo", f);
+		model.addAttribute("listaAlbum", this.albumService.getAlbumPerFotografo(f));
+		return "areaAlbumFunzionario";
+	}*/
+	@RequestMapping("/funzionario/fotografo/{id}/addAlbum")
 	public String visualizzaAlbumForm(@Valid@ModelAttribute("album")Album album,@PathVariable("id")Long id, 
 			Model model) {
 		Fotografo f = this.fotografoService.getPerId(id);
@@ -77,7 +91,7 @@ public class FunzionarioController {
 	}
 
 
-	@RequestMapping(value = "/fotografo/{id}/album", method = RequestMethod.POST)
+	@RequestMapping(value = "/funzionario/fotografo/{id}/album", method = RequestMethod.POST)
 	public String inserisciNuovoAlbum(@Valid@ModelAttribute("album")Album album,
 			@PathVariable("id")Long id,Model model, String titolo, BindingResult bindingResultAlbum ) {
 		Fotografo f = this.fotografoService.getPerId(id);
@@ -87,8 +101,8 @@ public class FunzionarioController {
 			this.albumService.setFotografo(album, f);
 			this.fotografoService.addAlbum(album, f);
 			model.addAttribute("album", album);
-			model.addAttribute("albums", this.albumService.getAlbumPerFotografo(f));
-			return "albums";
+			model.addAttribute("listaAlbum", this.albumService.getAlbumPerFotografo(f));
+			return "fotografoFunzionario";
 
 		}
 		else {
@@ -96,7 +110,7 @@ public class FunzionarioController {
 		}
 
 	}
-	@RequestMapping(value = "/fotografo/{idF}/album/{idA}", method = RequestMethod.GET)
+	@RequestMapping(value = "/funzionario/fotografo/{idF}/album/{idA}", method = RequestMethod.GET)
 	public String visualizzaAlbum(@Valid@ModelAttribute("fotografia") Fotografia ph,
 			@PathVariable("idF")Long idF,
 			@PathVariable("idA")Long idA, Model model) {
@@ -104,14 +118,14 @@ public class FunzionarioController {
 		model.addAttribute("fotografo", f);
 		if(this.albumService.existsPerId(idA)) {
 			model.addAttribute("album", this.albumService.getPerId(idA));
-			return "album";
+			return "albumFunzionario";
 		}
 		else {
-			model.addAttribute("albums", this.fotografoService.getAlbum(f));
-			return "albums";
+			model.addAttribute("listaAlbum", this.albumService.getAlbumPerFotografo(f));
+			return "fotografoFunzionario";
 		}
 	}
-	@RequestMapping(value = "/fotografo/{idF}/album/{idA}/addFotografia")
+	@RequestMapping(value = "/funzionario/fotografo/{idF}/album/{idA}/addFotografia")
 	public String visualizzaFotografiaForm(@Valid@ModelAttribute("fotografia")Fotografia fotografia,
 			@PathVariable("idF")Long idF,@PathVariable("idA")Long idA,Model model) {
 		model.addAttribute("fotografo", this.fotografoService.getPerId(idF));
@@ -119,7 +133,7 @@ public class FunzionarioController {
 		return "fotografiaForm";
 
 	}
-	@RequestMapping(value = "/fotografo/{idF}/album/{idA}/aggiornato", method = RequestMethod.POST)
+	@RequestMapping(value = "/funzionario/fotografo/{idF}/album/{idA}/confermaInserimentoFotografia", method = RequestMethod.POST)
 	public String inserisciNuovaFotografia(@Valid@ModelAttribute("fotografia")Fotografia fotografia,
 			@PathVariable("idF")Long idF, @PathVariable("idA")Long idA, Model model,
 			BindingResult bindingResult, String titolo) {
@@ -133,7 +147,8 @@ public class FunzionarioController {
 			model.addAttribute("album", a);
 			model.addAttribute("fotografo", f);
 			model.addAttribute("confermaInserimentoFotografia","Fotografia inserita correttamente!");
-			return "album";}
+			return "albumFunzionario";
+			}
 		else {
 			model.addAttribute("album", a);
 			model.addAttribute("fotografo", f);
@@ -156,7 +171,7 @@ public class FunzionarioController {
 		}
 		else {
 			model.addAttribute("fotografie", this.albumService.getFotografie(a));
-			return "album";
+			return "albumFunzionario";
 		}
 
 	}

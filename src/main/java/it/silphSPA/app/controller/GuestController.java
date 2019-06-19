@@ -17,14 +17,14 @@ import it.silphSPA.app.services.FotografoService;
 
 @Controller
 public class GuestController {
-	@Autowired
-	private FotografoService fotografoService;
-	@Autowired
-	private AlbumService albumService;
-	@Autowired
-	private FotografiaService fotografiaService;
-	
-	@RequestMapping(value = { "/admin" }, method = RequestMethod.GET)
+                @Autowired
+                private FotografoService fotografoService;
+                @Autowired
+                private AlbumService albumService;
+                @Autowired
+                private FotografiaService fotografiaService;
+                
+                @RequestMapping(value = { "/admin" }, method = RequestMethod.GET)
     public String admin(Model model) {
         UserDetails details = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String role = details.getAuthorities().iterator().next().getAuthority();    // get first authority
@@ -33,33 +33,33 @@ public class GuestController {
 
         return "admin";
     }
-	
-	@RequestMapping("/")
-	public String homeGuest() {
-		return "homeGuest";
-	}
-	
-	@RequestMapping("/areaFotografi")
-	public String visualizzaAreaFotografi(Model model) {
-		model.addAttribute("fotografi",this.fotografoService.getTutti());
-		return "areaFotografi";
-	}
-	@RequestMapping("/fotografo/{id}/areaAlbum")
-	public String visuallizzaAlbum(@PathVariable("id")Long id, Model model) {
-		Fotografo f = this.fotografoService.getPerId(id);
-		model.addAttribute("fotografo", f);
-		model.addAttribute("albums", this.albumService.getAlbumPerFotografo(f));
-		return "areaAlbum";
-	}
-	@RequestMapping("/fotografo/{idF}/album/{idA}/areaFotografie")
-	public String visualizzaFotografie(@PathVariable("idF")Long idF,
-			@PathVariable("idA")Long idA,Model model){
-		Fotografo f = this.fotografoService.getPerId(idF);
-		Album a = this.albumService.getPerId(idA);
-		model.addAttribute("fotografo", f);
-		model.addAttribute("album", a);
-		model.addAttribute("fotografie", this.fotografiaService.getPerAlbum(a));
-		return "areaFotografie";
-	}
-	
+                
+                @RequestMapping("/")
+                public String homeGuest() {
+                               return "homeGuest";
+                }
+                
+                @RequestMapping("/areaFotografi")
+                public String visualizzaAreaFotografi(Model model) {
+                               model.addAttribute("fotografi",this.fotografoService.getTutti());
+                               return "areaFotografi";
+                }
+                @RequestMapping("/fotografo/{id}")
+                public String visuallizzaAlbum(@PathVariable("id")Long id, Model model) {
+                               Fotografo f = this.fotografoService.getPerId(id);
+                               model.addAttribute("fotografo", f);
+                               model.addAttribute("listaAlbum", this.albumService.getAlbumPerFotografo(f));
+                               return "fotografoGuest";
+                }
+                @RequestMapping("/fotografo/{idF}/album/{idA}")
+                public String visualizzaFotografie(@PathVariable("idF")Long idF,
+                                               @PathVariable("idA")Long idA,Model model){
+                               Fotografo f = this.fotografoService.getPerId(idF);
+                               Album a = this.albumService.getPerId(idA);
+                               model.addAttribute("fotografo", f);
+                               model.addAttribute("album", a);
+                               model.addAttribute("fotografie", this.fotografiaService.getPerAlbum(a));
+                               return "albumGuest";
+                }
+                
 }

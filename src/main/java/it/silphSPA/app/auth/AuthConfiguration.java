@@ -66,7 +66,7 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
                 // use formlogin protocol to perform login
                 .and().formLogin()
                     // after login is successful, redirect to /welcome page
-                    .defaultSuccessUrl("/addFotografo")
+                    .defaultSuccessUrl("/homeFunzionario")
                 //NOTE: we are using the default configuration for login,
                 // meaning that the /login url is automatically mapped to auto-generated page.
                 // for our own page, we would need to use loginPage()

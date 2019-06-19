@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/html">
+<body>
+	<div>
+		<h4>
+			TITOLO ALBUM:<span
+				th:text="${album.titolo}"></span>
+		</h4>
+	</div>
+	<div>
+		<ul>
+			<li th:each="fotografia:${fotografie}"><a
+				th:href="@{'/funzionario'+'/fotografo' + '/' + ${fotografo.id} + '/album' + '/' + ${album.id}
+				+'/fotografia'+'/'+${fotografia.id}}"
+				th:text="${fotografia.titolo}">titolo Foresi</a>
+		</ul>
+	</div>
+	<div>
+		<a
+			th:href="@{'/funzionario'+'/fotografo' + '/' + ${fotografo.id} +
+				'/album'+'/'+${album.id}+'/addFotografia'}">Inserisci
+			una fotografia</a>
+	</div>
+
+
+</body>
+</html>
