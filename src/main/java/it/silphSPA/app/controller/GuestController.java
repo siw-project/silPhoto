@@ -31,26 +31,30 @@ public class GuestController {
 	private FotografiaService fotografiaService;
 	@Autowired
 	private RichiestaService richiestaService;
-	
-	private Richiesta richiestaCorrente;
-	
-	@RequestMapping(value = { "/admin" }, method = RequestMethod.GET)
-    public String admin(Model model) {
-        UserDetails details = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        String role = details.getAuthorities().iterator().next().getAuthority();    // get first authority
-        model.addAttribute("username", details.getUsername());
-        model.addAttribute("role", role);
 
-        return "admin";
-    }
-	
+	private Richiesta richiestaCorrente;
+
+	@RequestMapping(value = { "/admin" }, method = RequestMethod.GET)
+	public String admin(Model model) {
+		UserDetails details = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		String role = details.getAuthorities().iterator().next().getAuthority();    // get first authority
+		model.addAttribute("username", details.getUsername());
+		model.addAttribute("role", role);
+
+		return "admin";
+	}
+
 	@RequestMapping("/")
 	public String homeGuest() {
 		return "homeGuest";
 	}
-	
+
 	@RequestMapping("/areaFotografi")
 	public String visualizzaAreaFotografi(Model model) {
+		if(this.richiestaCorrente==null) {
+			this.richiestaCorrente = new Richiesta();
+		}
+		model.addAttribute("richiesta",this.richiestaCorrente);
 		model.addAttribute("fotografi",this.fotografoService.getTutti());
 		return "areaFotografi";
 	}
@@ -81,17 +85,15 @@ public class GuestController {
 		model.addAttribute("album", a);
 		model.addAttribute("fotografia", this.fotografiaService.getPerId(idPh));
 		return "fotografiaGuest";
-		
+
 	}
 	@RequestMapping(value = "/fotografo/{idF}/album/{idA}/fotografia/{idPh}/putInRichiesta", method = RequestMethod.GET)
 	public String aggiungiFotografiaInRichiesta(@PathVariable("idF")Long idF,@PathVariable("idA")Long idA,
-			@PathVariable("idPh")Long idPh,Model model) {
+			@PathVariable("idPh")Long idPh,@Valid@ModelAttribute("richiesta")Richiesta richiesta,
+			Model model) {
 		Fotografo f = this.fotografoService.getPerId(idF);
 		Album a = this.albumService.getPerId(idA);
 		Fotografia ph = this.fotografiaService.getPerId(idPh);
-		if(this.richiestaCorrente==null) {
-			this.richiestaCorrente = new Richiesta();
-			}
 		this.richiestaService.addFotografia(this.richiestaCorrente, ph);
 		model.addAttribute("fotografo", f);
 		model.addAttribute("album", a);
@@ -99,20 +101,25 @@ public class GuestController {
 		model.addAttribute("richiesta", this.richiestaCorrente);
 		return "confermaInserimentoFotografiaRichiesta";
 	}
-	
-	@RequestMapping("/confermaRichiesta")
-	public String confermaRichiesta(@PathVariable("idR")Long idR, Model model) {
-		this.richiestaService.inserisciRichiesta(this.richiestaCorrente);
+	@RequestMapping("/riepilogo/richiesta/{idR}")
+	public String visualizzaRiepilogoRichiesta(@PathVariable("idR")Long idR, 
+			@Valid@ModelAttribute("richiesta")Richiesta richiesta, Model model) {
 		model.addAttribute("richiesta", this.richiestaCorrente);
 		model.addAttribute("listaFotografie", this.richiestaService.getFotografie(this.richiestaCorrente));
 		return "confermaRichiesta";
 	}
-	@RequestMapping("/annullaRichiesta")
+	@RequestMapping("/conferma/richiesta/{idR}")
+	public String confermaRichiesta(@PathVariable("idR")Long idR, 
+			@Valid@ModelAttribute("richiesta")Richiesta richiesta, Model model) {
+		this.richiestaService.inserisciRichiesta(this.richiestaCorrente);
+		return "homeGuest";
+	}
+	@RequestMapping("/annulla/richiesta/{idR}")
 	public String annullaRichiesta(@PathVariable("idR")Long idR, Model model) {
 		this.richiestaCorrente=null;
 		return "homeGuest";
 	}
-		
-	
-	
+
+
+
 }

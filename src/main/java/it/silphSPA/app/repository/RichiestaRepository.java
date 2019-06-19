@@ -7,4 +7,5 @@ import org.springframework.data.repository.CrudRepository;
 import it.silphSPA.app.model.Richiesta;
 
 public interface RichiestaRepository extends CrudRepository<Richiesta,Long>{
+	
 }
