@@ -11,10 +11,15 @@
 	<div>
 		<ul>
 			<li th:each="album:${albums}"><a
-				th:href="@{'/fotografo' + '/' + ${fotografo.id} + '/album' + '/' + ${album.id}}"
-				th:text="${album.titolo}">titolo
-					Foresi</a>
+				th:href="@{'/funzionario'+'/fotografo' + '/' + ${fotografo.id} + '/album' + '/' + ${album.id}}"
+				th:text="${album.titolo}">titolo Foresi</a>
 		</ul>
+	</div>
+	<div>
+		<a
+			th:href="@{'/funzionario'+'/fotografo' + '/' + ${fotografo.id} +
+				'/album'+'/'+${album.id}+'/addFotografia'}">Inserisci
+			una fotografia</a>
 	</div>
 
 

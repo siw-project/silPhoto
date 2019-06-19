@@ -20,13 +20,7 @@
 				th:text="${fotografia.titolo+' '+fotografia.id}">ao</a></li>
 		</ul>
 	</div>
-	
-	<div>
-		<a
-			th:href="@{'/fotografo' + '/' + ${fotografo.id} +
-				'/album'+'/'+${album.id}+'/addFotografia'}">Inserisci
-			una fotografia</a>
-	</div>
+
 
 </body>
 </html>

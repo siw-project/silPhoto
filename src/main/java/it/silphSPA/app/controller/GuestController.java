@@ -44,14 +44,14 @@ public class GuestController {
 		model.addAttribute("fotografi",this.fotografoService.getTutti());
 		return "areaFotografi";
 	}
-	@RequestMapping("/fotografo/{id}/areaAlbum")
+	@RequestMapping("/fotografo/{id}")
 	public String visuallizzaAlbum(@PathVariable("id")Long id, Model model) {
 		Fotografo f = this.fotografoService.getPerId(id);
 		model.addAttribute("fotografo", f);
 		model.addAttribute("albums", this.albumService.getAlbumPerFotografo(f));
-		return "areaAlbum";
+		return "fotografoGuest";
 	}
-	@RequestMapping("/fotografo/{idF}/album/{idA}/areaFotografie")
+	@RequestMapping("/fotografo/{idF}/album/{idA}")
 	public String visualizzaFotografie(@PathVariable("idF")Long idF,
 			@PathVariable("idA")Long idA,Model model){
 		Fotografo f = this.fotografoService.getPerId(idF);
@@ -59,7 +59,7 @@ public class GuestController {
 		model.addAttribute("fotografo", f);
 		model.addAttribute("album", a);
 		model.addAttribute("fotografie", this.fotografiaService.getPerAlbum(a));
-		return "areaFotografie";
+		return "albumGuest";
 	}
 	
 }
