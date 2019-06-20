@@ -82,13 +82,7 @@ public class FunzionarioController {
 			return "listaFotografi";
 		}
 	}
-	/*@RequestMapping("/funzionario/fotografo/{id}/areaAlbum")
-	public String visualizzaAreaAlbum(@PathVariable("id")Long id,Model model) {
-		Fotografo f = this.fotografoService.getPerId(id);
-		model.addAttribute("fotografo", f);
-		model.addAttribute("listaAlbum", this.albumService.getAlbumPerFotografo(f));
-		return "areaAlbumFunzionario";
-	}*/
+
 	@RequestMapping("/funzionario/fotografo/{id}/addAlbum")
 	public String visualizzaAlbumForm(@Valid@ModelAttribute("album")Album album,@PathVariable("id")Long id, 
 			Model model) {

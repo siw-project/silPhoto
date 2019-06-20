@@ -1,22 +1,35 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns="http://www.w3.org/1999/html">
-<body>
+<head>
+<title>Full Motion</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" th:href="@{/css/main.css}" />
+</head>
+<body id="top">
+
 <div><h3><span th:text = "${confermaInserimentoAlbum}"></span></h3></div>
+	<div align="center">
+		<h4><font face="Times New Roman" size="10" color="white">FOTOGRAFO</font></h4>
+	
 	<div>
-		<h4>FOTOGRAFO</h4>
+		<font face="Times New Roman" size="4" color="white"><b>Nome:</b> <span th:text="${fotografo.nome}">Fran</span></font>
 	</div>
 	<div>
-		Nome: <span th:text="${fotografo.nome}">Fran</span>
+		<font face="Times New Roman" size="4" color="white"><b>Cognome:</b> <span th:text="${fotografo.cognome}">Fran</span></font>
 	</div>
-	<div>
-		Cognome: <span th:text="${fotografo.cognome}">F</span>
 	</div>
-	<div>
-		<h5>
-			Gli album del fotografo: <span
-				th:text="${fotografo.nome+' '+fotografo.cognome}">Francesco</span>
-		</h5>
+	
+	<br>
+	<br>
+	<div align="center">
+		<h5><font face="Times New Roman" size="8" color="white">
+			  Gli album del fotografo:   </font><font face="Times New Roman" size="6" color="white"><span th:text="${fotografo.nome+' '+fotografo.cognome}">Francesco</span></font></h5>
+			  
+				                           
+		
 	</div>
 	<div>
 		<ul>
@@ -25,6 +38,12 @@
 				th:text="${album.titolo}">titolo Foresi</a>
 		</ul>
 	</div>
+	
+		<div>
+		<a
+			th:href="@{'/funzionario'+'/fotografo'+'/'+${fotografo.id}+'/addAlbum'}">Aggiungi Album</a>
+	</div>
+	
 	<div>
 		<a
 			th:href="@{'/funzionario'+'/listaFotografi'}">Torna indietro</a>

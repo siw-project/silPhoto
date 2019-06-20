@@ -4,6 +4,7 @@
 
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns="http://www.w3.org/1999/html">
+	
 <head>
 <title>Full Motion</title>
 <meta charset="utf-8" />
@@ -13,7 +14,15 @@
 <body id="top">
 
    <div align="center">
-   <div><a th:href = "@{'/riepilogo'+'/richiesta'+'/'+${richiesta.id}}">Vai al Carrello!</a></div>
+   <table border="1">
+   <tr>
+   <td align="left"> <a th:href = "@{'/'}"><button type = "submit">Indietro</button></a></td>
+   <td align="right"><a th:href = "@{'/riepilogo'+'/richiesta'+'/'+${richiesta.id}}"><button type = "submit">Vai al Carrello!</button></a></td>
+   
+   
+   
+   </tr>
+   </table>
 	<div>
 		<span style="font-size:100px;"><b>Fotografi</b></span>
 	</div>
