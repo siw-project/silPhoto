@@ -31,6 +31,12 @@ public class Fotografia {
 	public void setAlbum(Album album) {
 		this.album = album;
 	}
+	public List<Richiesta> getRichieste() {
+		return richieste;
+	}
+	public void setRichieste(List<Richiesta> richieste) {
+		this.richieste = richieste;
+	}
 	
 	
 }

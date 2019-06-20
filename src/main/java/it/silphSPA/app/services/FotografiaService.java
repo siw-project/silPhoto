@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import it.silphSPA.app.model.Album;
 import it.silphSPA.app.model.Fotografia;
+import it.silphSPA.app.model.Richiesta;
 import it.silphSPA.app.repository.FotografiaRepository;
 
 @Service
@@ -44,5 +45,17 @@ public class FotografiaService {
 	public void setAlbum(Album a,Fotografia f) {
 		f.setAlbum(a);
 	}
+	@Transactional
+	public List<Fotografia> getPerRichiesta(Richiesta r){
+		return this.fotografiaRepository.findByRichieste(r);
+	}
+	
+	@Transactional
+	public void addRichiesta(Richiesta r,Fotografia f) {
+	        f.getRichieste().add(r);
+		
+	}
+	
+
 
 }

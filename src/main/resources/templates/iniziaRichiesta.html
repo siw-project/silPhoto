@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/html">
+	<head>
+		<title>Full Motion</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" th:href="@{/css/main.css}" />
+	</head>
+	<body id="top">
+	   
+	<br>
+	<br>
+	<br>
+	<div align="center">
+	<a th:href="@{'/gallery'+'/'+${richiesta.id}}"><button type = "submit">INIZIA LA TUA RICHIESTA</button></a>
+		
+	</div>
+
+
+</body>
+</html>

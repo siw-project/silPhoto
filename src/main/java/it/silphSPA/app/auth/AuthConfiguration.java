@@ -62,6 +62,9 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
                     .antMatchers(HttpMethod.GET,"/conferma/richiesta/{idR}").permitAll()
                     .antMatchers(HttpMethod.GET,"/fotografo/{idF}/album/{idA}/fotografia/{idPh}/putInRichiesta").permitAll()
                     .antMatchers(HttpMethod.GET,"/annulla/richiesta/{idR}").permitAll()
+                    .antMatchers(HttpMethod.GET, "/gallery/{idR}").permitAll()
+                    .antMatchers(HttpMethod.GET, "/iniziaRichiesta").permitAll()
+                    .antMatchers(HttpMethod.GET, "/gallery/{idR}/putInRichiesta/{idPh}").permitAll()
                     // only admin can access the admin page
                     .antMatchers(HttpMethod.GET, "/admin").hasAnyAuthority("ADMIN")
 

@@ -1,23 +1,39 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns="http://www.w3.org/1999/html">
-<body>
-	<div>
-		<h4>Queste sono le foto che hai selezionato:</h4>
+<head>
+<title>Full Motion</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" th:href="@{/css/main.css}" />
+</head>
+<body id="top">
+
+	<div align="center">
+		<font face="Times New Roman" size="8" color="white">Queste sono le foto che hai selezionato:</font>
 	</div>
+	<div align="center">
 	<div>
 		<ul>
-			<li th:each="fotografia:${listaFotografie}"><a
-				th:text="${fotografia.titolo + fotografia.id}">titolo</a></li>
+			<li th:each="fotografia:${listaFotografie}"><font face="Times New Roman" size="4" color="white"><a
+				th:text="${fotografia.titolo + fotografia.id}">titolo</a></font></li>
 		</ul>
 	</div>
 	<div>
-		<a th:href="@{'/conferma'+'/richiesta'+'/'+${richiesta.id}}">Conferma Richiesta</a>
+		<a th:href="@{'/conferma'+'/richiesta'}"><button
+				type="submit">Conferma Richiesta</button></a>
 	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	
 	<div>
-	<a th:href="@{'/annulla'+'/richiesta'+'/'+${richiesta.id}}">Annulla Richiesta</a></div>
+	<a th:href="@{'/annulla'+'/richiesta'+'/'+${richiesta.id}}"><button
+				type="submit">Annulla Richiesta</button></a></div>
 
-
+</div>
 </body>
 </html>
 

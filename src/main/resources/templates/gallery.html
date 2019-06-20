@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/html">
+<head>
+<title>Full Motion</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" th:href="@{/css/main.css}" />
+</head>
+<body id="top">
+
+
+	<div align="center">
+
+		<ul>
+			<li th:each="fotografia:${listaFotografie}"><font
+				face="Times New Roman" size="4" color="white"><a
+					th:text="${fotografia.titolo}">titolo Piervy</a></font>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a
+				th:href="@{'/gallery'+'/'+${richiesta.id}+'/putInRichiesta'+'/'+${fotografia.id}}"><button
+						type="submit">Aggiungi</button><br></a></li>
+
+
+
+		</ul>
+
+	</div>
+
+	<div align="center">
+
+		<a th:href="@{'/riepilogo'+'/richiesta'+'/'+${richiesta.id}}"><button
+				type="submit">Vai al riepilogo della richiesta</button></a>
+
+	</div>
+
+
+</body>
+</html>

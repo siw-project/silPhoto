@@ -1,7 +1,14 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns="http://www.w3.org/1999/html">
-<body>
+<head>
+<title>Full Motion</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" th:href="@{/css/main.css}" />
+</head>
+<body id="top">
 	<div>
 		<h4>
 			FOTOGRAFIA <span th:text="${fotografia.titolo}"></span>
@@ -13,8 +20,7 @@
 
 	<div>
 		<a
-			th:href="@{'/fotografo'+'/'+${fotografo.id}+'/album'+'/'+
-	${album.id}}">Torna
+			th:href="@{'/gallery'+'/'+${richiesta.id}}">Torna
 			Indietro</a>
 
 	</div>
