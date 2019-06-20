@@ -170,7 +170,7 @@ public class FunzionarioController {
 		model.addAttribute("album", a);
 		if(this.fotografiaService.existsPerId(idPh)) {
 			model.addAttribute("fotografia", this.fotografiaService.getPerId(idPh));
-			return "fotografia";
+			return "fotografiaFunzionario";
 		}
 		else {
 			model.addAttribute("fotografie", this.fotografiaService.getPerAlbum(a));

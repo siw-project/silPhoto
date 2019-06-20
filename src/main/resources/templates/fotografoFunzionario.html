@@ -10,12 +10,14 @@
 </head>
 <body id="top">
 
-<div><h3><span th:text = "${confermaInserimentoAlbum}"></span></h3></div>
+<div align="center"><font face="Times New Roman" size="8" color="white"><span th:text = "${confermaInserimentoAlbum}">ok</span></font></div>
 	<div align="center">
+	<br>
+	<br>
 		<h4><font face="Times New Roman" size="10" color="white">FOTOGRAFO</font></h4>
 	
 	<div>
-		<font face="Times New Roman" size="4" color="white"><b>Nome:</b> <span th:text="${fotografo.nome}">Fran</span></font>
+		<font face="Times New Roman" size="4" color="white"><b>Nome:</b> <span th:text="${fotografo.nome}">Pieri</span></font>
 	</div>
 	<div>
 		<font face="Times New Roman" size="4" color="white"><b>Cognome:</b> <span th:text="${fotografo.cognome}">Fran</span></font>
@@ -31,22 +33,28 @@
 				                           
 		
 	</div>
-	<div>
+	<div align="center">
 		<ul>
-			<li th:each="album:${listaAlbum}"><a
+			<li th:each="album:${listaAlbum}"><font face="Times New Roman" size="4" color="white"><a
 				th:href="@{'/funzionario'+'/fotografo' + '/' + ${fotografo.id} + '/album' + '/' + ${album.id}}"
-				th:text="${album.titolo}">titolo Foresi</a>
+				th:text="${album.titolo}">titolo pieri</a></font></li>
 		</ul>
 	</div>
 	
-		<div>
+		<div align="center">
 		<a
-			th:href="@{'/funzionario'+'/fotografo'+'/'+${fotografo.id}+'/addAlbum'}">Aggiungi Album</a>
+			th:href="@{'/funzionario'+'/fotografo'+'/'+${fotografo.id}+'/addAlbum'}"><button type = "submit">Aggiungi Album</button></a>
 	</div>
-	
-	<div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div align="center">
 		<a
-			th:href="@{'/funzionario'+'/listaFotografi'}">Torna indietro</a>
+			th:href="@{'/funzionario'+'/listaFotografi'}"><button type = "submit">Torna indietro</button></a>
 	</div>
 
 

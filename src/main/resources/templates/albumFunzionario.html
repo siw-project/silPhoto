@@ -1,34 +1,47 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns="http://www.w3.org/1999/html">
-<body>
-	<div>
-		<h3>
-			<span th:text="${confermaInserimentoFotografia}"></span>
-		</h3>
+<head>
+<title>Full Motion</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" th:href="@{/css/main.css}" />
+</head>
+<body id="top">
+	<div align="center"><font face="Times New Roman" size="6" color="white">
+		
+			<span th:text="${confermaInserimentoFotografia}">ok</span></font>
+		
 	</div>
-	<div>
+	<div align="center">
 		<h4>
-			TITOLO ALBUM:<span th:text="${album.titolo}"></span>
+			<font face="Times New Roman" size="8" color="white">ALBUM:<span th:text="${album.titolo}">ok</span></font>
 		</h4>
 	</div>
-	<div>
+	<div align="center">
 		<ul>
-			<li th:each="fotografia:${fotografie}"><a
+			<li th:each="fotografia:${fotografie}"><font face="Times New Roman" size="4" color="white"><a
 				th:href="@{'/funzionario'+'/fotografo' + '/' + ${fotografo.id} + '/album' + '/' + ${album.id}
 				+'/fotografia'+'/'+${fotografia.id}}"
-				th:text="${fotografia.titolo}">titolo Foresi</a></li>
+				th:text="${fotografia.titolo}">titolo Foresi</a></font></li>
 		</ul>
 	</div>
-	<div>
+	<div align="center">
 		<a
 			th:href="@{'/funzionario'+'/fotografo' + '/' + ${fotografo.id} +
-				'/album'+'/'+${album.id}+'/addFotografia'}">Inserisci
-			una fotografia</a>
+				'/album'+'/'+${album.id}+'/addFotografia'}"><button type = "submit">Inserisci
+			una fotografia</button></a>
 	</div>
-	<div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div align="center">
 		<a
-			th:href="@{'/funzionario'+'/fotografo'+'/'+${fotografo.id}}">Torna indietro</a>
+			th:href="@{'/funzionario'+'/fotografo'+'/'+${fotografo.id}}"><button type = "submit">Torna indietro</button></a>
 	</div>
 
 

@@ -1,23 +1,33 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns="http://www.w3.org/1999/html">
-<body>
-	<div>
+<head>
+<title>Full Motion</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" th:href="@{/css/main.css}" />
+</head>
+<body id="top">
+	
+	
+	<div align="center">
 		<h4>
-			TITOLO ALBUM:<span th:text="${album.titolo}"></span>
+			<font face="Times New Roman" size="8" color="white">ALBUM:<span th:text="${album.titolo}"></span></font>
 		</h4>
 	</div>
-	<div>
+	<div align="center">
 		<ul>
-			<li th:each="fotografia:${fotografie}"><a
+			<li th:each="fotografia:${fotografie}"><font face="Times New Roman" size="4" color="white"><a
 				th:href="@{'/fotografo' + '/' + ${fotografo.id} + '/album' + '/' + ${album.id}
 				+'/fotografia'+'/'+${fotografia.id}}"
-				th:text="${fotografia.titolo}">titolo Foresi</a></li>
+				th:text="${fotografia.titolo}">titolo pieri</a></font></li>
 		</ul>
 	</div>
-	<div><a
-				th:href="@{'/fotografo' + '/' + ${fotografo.id}}">Torna Indietro</a></div>
-
+	<div align="center"><a
+				th:href="@{'/fotografo' + '/' + ${fotografo.id}}"><button type = "submit">Torna Indietro</button></a></div>
+				
+	
 
 </body>
 </html>

@@ -1,9 +1,16 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns="http://www.w3.org/1999/html">
-<body>
-	<div>
-		<h4>Inserisci un Album per <span th:text="${fotografo.cognome}">Franzino</span></h4>
+<head>
+<title>Full Motion</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" th:href="@{/css/main.css}" />
+</head>
+<body id="top">
+	<div align="center"><font face="Times New Roman" size="8" color="white"><b>Inserisci un Album per</b>
+		<span th:text="${fotografo.cognome}">Pieri</span></font>
 	</div>
 	<div>
 		<form th:action="@{'/funzionario'+'/fotografo'+'/'+${fotografo.id}+'/album'}"
@@ -17,7 +24,9 @@
 				<tr>
 				</tr>
 			</table>
+			<div align="center">
 			<button type="submit">Invia</button>
+			</div>
 		</form>
 		
 

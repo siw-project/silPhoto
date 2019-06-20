@@ -34,6 +34,13 @@ public class GuestController {
 
 	private Richiesta richiestaCorrente;
 
+	@RequestMapping("/contatti")
+		public String contatti() {
+			return "contatti";
+		}
+		
+	
+
 	@RequestMapping(value = { "/admin" }, method = RequestMethod.GET)
 	public String admin(Model model) {
 		UserDetails details = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -111,6 +118,7 @@ public class GuestController {
 	@RequestMapping("/conferma/richiesta/{idR}")
 	public String confermaRichiesta(@PathVariable("idR")Long idR, 
 			@Valid@ModelAttribute("richiesta")Richiesta richiesta, Model model) {
+		
 		this.richiestaService.inserisciRichiesta(this.richiestaCorrente);
 		return "homeGuest";
 	}
