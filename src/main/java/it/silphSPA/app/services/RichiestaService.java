@@ -40,4 +40,5 @@ public class RichiestaService {
 		this.richiestaRepository.delete(r);
 	}
 
+
 }

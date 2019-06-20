@@ -7,6 +7,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +21,7 @@ import it.silphSPA.app.services.AlbumService;
 import it.silphSPA.app.services.FotografiaService;
 import it.silphSPA.app.services.FotografoService;
 import it.silphSPA.app.services.RichiestaService;
+import it.silphSPA.app.services.RichiestaValidator;
 
 @Controller
 public class GuestController {
@@ -31,6 +33,9 @@ public class GuestController {
 	private FotografiaService fotografiaService;
 	@Autowired
 	private RichiestaService richiestaService;
+
+	@Autowired
+	private RichiestaValidator richiestaValidator;
 
 	@RequestMapping(value = { "/admin" }, method = RequestMethod.GET)
 	public String admin(Model model) {
@@ -119,15 +124,26 @@ public class GuestController {
 		model.addAttribute("richiesta", r);
 		return "confermaRichiesta";
 	}
-	@RequestMapping("/conferma/richiesta")
-	public String confermaRichiesta( Model model) {
+	@RequestMapping(value = "/conferma/richiesta/{idR}", method = RequestMethod.POST)
+	public String confermaRichiesta( @PathVariable("idR")Long idR, @Valid@ModelAttribute("richiesta")Richiesta richiesta, String nomeDestinatario, String cognomeDestinatario,
+			BindingResult bindingResult, Model model) {
 
-		return "homeGuest";
-	}
-	@RequestMapping("/annulla/richiesta/")
-	public String annullaRichiesta(@PathVariable("idR")Long idR, Model model) {
 		Richiesta r = this.richiestaService.getPerId(idR);
-		this.richiestaService.deleteRichiesta(r);
-		return "homeGuest";
+		this.richiestaValidator.validate(richiesta, bindingResult);
+		if(!bindingResult.hasErrors()) {
+			r.setNomeDestinatario(richiesta.getNomeDestinatario());
+			r.setCognomeDestinatario(richiesta.getCognomeDestinatario());
+			return "richiestaAccettata";
+		}else {
+			model.addAttribute("listaFotografie", this.fotografiaService.getPerRichiesta(r));
+			model.addAttribute("richiesta", r);
+			return "confermaRichiesta";
+		}
+
+	}
+	@RequestMapping("/richiestaAccettata")
+	public String richiestaAccettata( Model model) {
+
+		return "/homeGuest";
 	}
 }

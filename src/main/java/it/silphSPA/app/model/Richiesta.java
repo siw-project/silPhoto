@@ -14,7 +14,6 @@ public class Richiesta {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	private String indirizzo;
 	private String nomeDestinatario;
 	private String cognomeDestinatario;
 	@ManyToMany(mappedBy="richieste")
@@ -27,12 +26,6 @@ public class Richiesta {
 	}
 	public void setId(Long id) {
 		this.id = id;
-	}
-	public String getIndirizzo() {
-		return indirizzo;
-	}
-	public void setIndirizzo(String indirizzo) {
-		this.indirizzo = indirizzo;
 	}
 	public String getNomeDestinatario() {
 		return nomeDestinatario;

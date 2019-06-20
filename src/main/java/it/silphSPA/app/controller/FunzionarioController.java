@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import it.silphSPA.app.model.Album;
 import it.silphSPA.app.model.Fotografia;
 import it.silphSPA.app.model.Fotografo;
+import it.silphSPA.app.model.Richiesta;
 import it.silphSPA.app.services.*;
 
 @Controller
@@ -39,9 +40,16 @@ public class FunzionarioController {
 		return "homeFunzionario";
 	}
 	@RequestMapping("/funzionario/richieste")
-	public String visualizzaRichieste(Model model) {
-		model.addAttribute("richieste", this.richiestaService.getTutte());
-		return "listaRichieste";
+	public String visualizzaRichieste(@Valid@ModelAttribute("richiesta")Richiesta richiesta, Model model) {
+		model.addAttribute("listaRichieste", this.richiestaService.getTutte());
+		return "listaRichiesta";
+	}
+	@RequestMapping("/funzionario/richiesta/{idR}")
+	public String visualizzaRichiesta(@PathVariable("idR")Long idR, Model model) {
+		Richiesta r = this.richiestaService.getPerId(idR);
+		model.addAttribute("richiesta", r);
+		model.addAttribute("listaFotografie", this.richiestaService.getFotografie(r));
+		return "richiesta";
 	}
 	@RequestMapping("/funzionario/listaFotografi")
 	public String visualizzaAreaFotografi(Model model) {

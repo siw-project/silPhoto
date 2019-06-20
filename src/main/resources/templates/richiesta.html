@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/html">
+<head>
+<title>Full Motion</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" th:href="@{/css/main.css}" />
+</head>
+<body id="top">
+
+<div align="center"><font face="Times New Roman" size="8" color="white"><span th:text = "${confermaInserimentoAlbum}">ok</span></font></div>
+	<div align="center">
+	<br>
+	<br>
+		<h4><font face="Times New Roman" size="10" color="white">RICHIESTA:</font></h4>
+		<div>
+		<font face="Times New Roman" size="4" color="white"><b>Id:</b> <span th:text="${richiesta.id}">Fran</span></font>
+	</div>
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div align="center">
+		<h5><font face="Times New Roman" size="8" color="white">
+			  Ecco le foto richieste : </font><font face="Times New Roman" size="6" color="white"><span th:text="${richiesta.cognomeDestinatario}">Francesco</span></font></h5>
+			  
+				                           
+		
+	</div>
+	<div align="center">
+		<ul>
+			<li th:each="fotografia:${listaFotografie}"><font face="Times New Roman" size="4" color="white"><a
+				th:text="${fotografia.titolo}">titolo pieri</a></font></li>
+		</ul>
+	</div>
+	
+		<div align="center">
+		<a
+			th:href="@{'/funzionario'+'/richieste'}"><button type = "submit">Torna indietro</button></a>
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+
+
+</body>
+</html>

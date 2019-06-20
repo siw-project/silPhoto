@@ -2,103 +2,118 @@
 
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns="http://www.w3.org/1999/html">
-	<head>
-		<title>Full Motion</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" th:href="@{/css/main.css}" />
-	</head>
-	<body id="top">
+<head>
+<title>Full Motion</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" th:href="@{/css/main.css}" />
+</head>
+<body id="top">
 
-			
 
-				<section id="banner" data-video="images/banner">
+
+	<section id="banner" data-video="images/banner">
+		<div class="inner">
+			<header>
+				<h1>SilphSPA</h1>
+				<p>Il primo sito in Italia per la compra-vendita di foto On-line</p>
+			</header>
+			<a href="#main" class="more">Learn More</a>
+		</div>
+	</section>
+
+	<!-- Main -->
+	<div id="main">
+		<div class="inner">
+
+			<!-- Boxes -->
+			<div class="thumbnails">
+
+				<div class="box">
+					<a th:href="@{/areaFotografi}" class="image fit"><img
+						src="images/pic01.jpg" alt="" /></a>
 					<div class="inner">
-						<header>
-							<h1>SILPspa</h1>
-							<p>Il primo sito in Italia per la compra-vendita di foto On-line</p>
-						</header>
-						<a href="#main" class="more">Learn More</a>
+						<h3>Cerca foto da acquistare</h3>
+						<p>Clicca qui sotto per acquistare foto dei nostri fotografi
+							SILPspa</p>
+						<a th:href="@{/areaFotografi}" class="button fit">Vai</a>
 					</div>
-				</section>
-
-			<!-- Main -->
-				<div id="main">
+				</div>
+				
+				<div class="box">
+					<a th:href="@{/iniziaRichiesta}" class="image fit"><img
+						src="images/pic03.jpg" alt="" /></a>
 					<div class="inner">
-
-					<!-- Boxes -->
-						<div class="thumbnails">
-
-							<div class="box">
-								<a th:href="@{/areaFotografi}" class="image fit"><img src="images/pic01.jpg" alt="" /></a>
-								<div class="inner">
-									<h3>Cerca foto da acquistare</h3>
-									<p>Clicca qui sotto per acquistare foto dei nostri fotografi SILPspa</p>
-									<a th:href="@{/areaFotografi}" class="button fit">Vai</a>
-								</div>
-							</div>
-
-							<div class="box">
-								<a th:href="@{/funzionario/home}" class="image fit"><img src="images/pic02.jpg" alt="" /></a>
-								<div class="inner">
-									<h3>Area funzionari</h3>
-									<p>Clicca qua sotto per accedere alla zona riservata ai funzionari dove potrai aggiungere album e foto</p>
-									<a th:href="@{/funzionario/home}" class="button style2 fit" >Vai</a>
-								</div>
-							</div>
-
-							<div class="box">
-								<a th:href="@{/contatti}" class="image fit"><img src="images/pic03.jpg" alt="" /></a>
-								<div class="inner">
-									<h3>Contatti</h3>
-									<p>Clicca qui per contattarci </p>
-									<br>
-									<a th:href="@{/contatti}" class="button style3 fit" >Vai</a>
-								</div>
-							</div>
-   
-   							<div class="box">
-								<a th:href="@{/iniziaRichiesta}" class="image fit"><img src="images/pic03.jpg" alt="" /></a>
-								<div class="inner">
-									<h3>Gallery</h3>
-									<p>Clicca qui per visualizzare la galleria </p>
-									<br>
-									<a th:href="@{/iniziaRichiesta}" class="button style3 fit" >Vai</a>
-								</div>
-							</div>
-						
-
-							
-							</div>
-
-						</div>
-
+						<h3>Gallery</h3>
+						<p>Clicca qui per visualizzare la galleria e iniziare una nuova richiesta</p>
+						<br> <a th:href="@{/iniziaRichiesta}"
+							class="button style3 fit">Vai</a>
 					</div>
+				</div>
 				
 
-			<!-- Footer -->
-				<footer id="footer">
+				<div class="box">
+					<a th:href="@{/funzionario/home}" class="image fit"><img
+						src="images/pic02.jpg" alt="" /></a>
 					<div class="inner">
-						<h2>SILPspa © Copyright</h2>
-						<p>A cura di Pier Vincenzo De Lellis & Francesco Foresi</p>
-
-						<ul class="icons">
-							<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-							<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-							<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-							<li><a href="#" class="icon fa-envelope"><span class="label">Email</span></a></li>
-						</ul>
-						<p class="copyright">&copy; Untitled. Design: <a href="https://templated.co">TEMPLATED</a>. Images: <a href="https://unsplash.com/">Unsplash</a>. Videos: <a href="http://coverr.co/">Coverr</a>.</p>
+						<h3>Area funzionari</h3>
+						<p>Clicca qua sotto per accedere alla zona riservata ai
+							funzionari dove potrai aggiungere album e foto</p>
+						<a th:href="@{/funzionario/home}" class="button style2 fit">Vai</a>
 					</div>
-				</footer>
+				</div>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/jquery.poptrox.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+				<div class="box">
+					<a th:href="@{/contatti}" class="image fit"><img
+						src="images/pic03.jpg" alt="" /></a>
+					<div class="inner">
+						<h3>Contatti</h3>
+						<p>Clicca qui per contattarci</p>
+						<br> <a th:href="@{/contatti}" class="button style3 fit">Vai</a>
+					</div>
+				</div>
 
-	</body>
+
+
+
+
+			</div>
+
+		</div>
+
+	</div>
+
+
+	<!-- Footer -->
+	<footer id="footer">
+		<div class="inner">
+			<h2>SilphSPA © Copyright</h2>
+			<p>A cura di Pier Vincenzo De Lellis & Francesco Foresi</p>
+
+			<ul class="icons">
+				<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+				<li><a href="#" class="icon fa-facebook"><span
+						class="label">Facebook</span></a></li>
+				<li><a href="#" class="icon fa-instagram"><span
+						class="label">Instagram</span></a></li>
+				<li><a href="#" class="icon fa-envelope"><span
+						class="label">Email</span></a></li>
+			</ul>
+			<p class="copyright">
+				&copy; Untitled. Design: <a href="https://templated.co">TEMPLATED</a>.
+				Images: <a href="https://unsplash.com/">Unsplash</a>. Videos: <a
+					href="http://coverr.co/">Coverr</a>.
+			</p>
+		</div>
+	</footer>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/jquery.poptrox.min.js"></script>
+	<script src="assets/js/skel.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+</body>
 </html>

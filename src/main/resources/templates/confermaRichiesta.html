@@ -21,8 +21,23 @@
 		</ul>
 	</div>
 	<div>
-		<a th:href="@{'/conferma'+'/richiesta'}"><button
-				type="submit">Conferma Richiesta</button></a>
+			<form th:action="@{'/conferma'+'/richiesta'+'/'+${richiesta.id}}" method="POST"
+			th:object="${richiesta}">
+			<table>
+				<tr>
+					<td>NOME:</td>
+					<td><input type="text" th:field="*{nomeDestinatario}"></td>
+					<td th:if="${#fields.hasErrors('nomeDestinatario')}" th:errors="*{nomeDestinatario}"></td>
+				</tr>
+				<tr>
+					<td>COGNOME:</td>
+					<td><input type="text" th:field="*{cognomeDestinatario}"></td>
+					<td th:if="${#fields.hasErrors('cognomeDestinatario')}" th:errors="*{cognomeDestinatario}"></td>
+				</tr>
+				<tr><td><button
+				type="submit">Conferma Richiesta</button></td></tr>
+			</table>
+			</form>
 	</div>
 	<br>
 	<br>
@@ -30,7 +45,7 @@
 	<br>
 	
 	<div>
-	<a th:href="@{'/annulla'+'/richiesta'+'/'+${richiesta.id}}"><button
+	<a th:href="@{/}"><button
 				type="submit">Annulla Richiesta</button></a></div>
 
 </div>

@@ -2,20 +2,28 @@
 
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns="http://www.w3.org/1999/html">
-	<head>
-		<title>Full Motion</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" th:href="@{/css/main.css}" />
-	</head>
-	<body id="top">
-	   
+<head>
+<title>Full Motion</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" th:href="@{/css/main.css}" />
+</head>
+<body id="top">
+	<div align="center">
+		<font face="Times New Roman" size="8" color="white">Grazie per
+			aver scelto SilphSPA per un'esperienza unica nell'acquisto delle
+			fotografie dei nostri esclusivi fotografi!</font>
+	</div>
+	<br>
+	<br>
+	<br>
 	<br>
 	<br>
 	<br>
 	<div align="center">
-	<a th:href="@{'/gallery'+'/'+${richiesta.id}}"><button type = "submit">INIZIA LA TUA RICHIESTA</button></a>
-		
+		<a th:href="@{'/gallery'+'/'+${richiesta.id}}"><button
+				type="submit">INIZIA LA TUA RICHIESTA</button></a>
+
 	</div>
 
 
